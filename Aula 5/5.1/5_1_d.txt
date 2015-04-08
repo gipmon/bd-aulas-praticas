@@ -1,0 +1,7 @@
+-- σ Pname = 'Aveiro Digital' project
+-- σ Dno = 3 (π Fname, Minit, Lname, Ssn, Dno employee) ⨝ (Ssn=Essn) works_on
+-- (σ Dno = 3 (π Fname, Minit, Lname, Ssn, Dno employee) ⨝ (Ssn=Essn) works_on)
+-- (π Pnumber σ Pname = 'Aveiro Digital' project)
+-- (π Pnumber σ Pname = 'Aveiro Digital' project) ⨝ (Pnumber=Pno) (σ Dno = 3 (π Fname, Minit, Lname, Ssn, Dno employee) ⨝ (Ssn=Essn) works_on)
+
+π Fname,Minit,Lname (σ Hours>20 ((π Pnumber σ Pname = 'Aveiro Digital' project) ⨝ (Pnumber=Pno) (σ Dno = 3 (π Fname, Minit, Lname, Ssn, Dno employee) ⨝ (Ssn=Essn) works_on)))

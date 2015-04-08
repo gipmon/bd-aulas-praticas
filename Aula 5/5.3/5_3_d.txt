@@ -1,0 +1,5 @@
+-- σ numRegFarm=15432 presc_farmaco
+-- σ farmaco.numRegFarm=15432 (farmaco ⟕ (nomeFarmaco=nome) presc_farmaco)
+-- σ numPresc=null (σ farmaco.numRegFarm=15432 (farmaco ⟕ (nomeFarmaco=nome) presc_farmaco))
+
+π farmaco.numRegFarm, nome, formula (σ numPresc=null (σ farmaco.numRegFarm=15432 (farmaco ⟕ (nomeFarmaco=nome) presc_farmaco)))

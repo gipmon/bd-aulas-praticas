@@ -1,0 +1,6 @@
+-- (π numPresc, numMedico prescricao)
+-- γ numMedico; count(numPresc)->totalPresc (π numPresc, numMedico prescricao)
+-- π numSNS, especialidade medico ⨝ (numSNS = numMedico) (γ numMedico; count(numPresc)->totalPresc (π numPresc, numMedico prescricao))
+-- π  especialidade, totalPresc (π numSNS, especialidade medico ⨝ (numSNS = numMedico) (γ numMedico; count(numPresc)->totalPresc (π numPresc, numMedico prescricao)))
+
+γ especialidade; sum(totalPresc) -> numPresc  (π  especialidade, totalPresc (π numSNS, especialidade medico ⨝ (numSNS = numMedico) (γ numMedico; count(numPresc)->totalPresc (π numPresc, numMedico prescricao))))

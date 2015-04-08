@@ -1,0 +1,7 @@
+-- γ Essn; count(Essn)->Dependentes dependent
+-- employee ⨝ Ssn=Essn (γ Essn; count(Essn)->Dependentes dependent)
+-- σ Mgr_ssn != Null (π Mgr_ssn department)
+-- σ Mgr_ssn != Null (π Mgr_ssn department) ⟗ Mgr_ssn=Essn (γ Essn; count(Essn)->Dependentes dependent)
+-- σ Dependentes=Null (σ Mgr_ssn != Null (π Mgr_ssn department) ⟗ Mgr_ssn=Essn (γ Essn; count(Essn)->Dependentes dependent))
+
+employee ⨝ Ssn=Mgr_ssn σ Dependentes=Null (σ Mgr_ssn != Null (π Mgr_ssn department) ⟗ Mgr_ssn=Essn (γ Essn; count(Essn)->Dependentes dependent))

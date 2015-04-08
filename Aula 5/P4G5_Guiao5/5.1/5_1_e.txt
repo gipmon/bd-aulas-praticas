@@ -1,0 +1,1 @@
+π Fname, Minit, Lname (σ works_on.Pno = Null (employee ⟗ (Ssn=Essn) works_on))

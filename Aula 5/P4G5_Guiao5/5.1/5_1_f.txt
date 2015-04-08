@@ -1,0 +1,6 @@
+-- π Sex, Salary, Dno employee
+-- (π Salary, Dno (σ Sex='F' employee))
+-- γ Dno; avg(Salary) -> Avg_Salary (π Salary, Dno (σ Sex='F' employee))
+-- π Dname, Dnumber department ⨝ Dnumber=Dno  (γ Dno; avg(Salary) -> Avg_Salary (π Salary, Dno (σ Sex='F' employee)))
+
+πDname, Avg_Salary (department ⨝ Dnumber=Dno  (γ Dno; avg(Salary) -> Avg_Salary (π Salary, Dno (σ Sex='F' employee))))

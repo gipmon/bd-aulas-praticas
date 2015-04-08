@@ -1,0 +1,1 @@
+π paciente.numUtente, paciente.nome, paciente.dataNasc, paciente.endereco (σ numPresc=Null (paciente ⟕ (paciente.numUtente=prescricao.numUtente) prescricao))

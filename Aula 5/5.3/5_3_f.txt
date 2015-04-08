@@ -1,0 +1,4 @@
+-- γ numUtente; count(numMedico)->numMedicos (π numUtente, numMedico  prescricao)
+-- σ numMedicos > 1 (γ numUtente; count(numMedico)->numMedicos (π numUtente, numMedico  prescricao))
+
+paciente ⨝ (π numUtente (σ numMedicos > 1 (γ numUtente; count(numMedico)->numMedicos (π numUtente, numMedico  prescricao))))

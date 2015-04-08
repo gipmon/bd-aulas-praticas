@@ -1,0 +1,1 @@
+π Pname,Pnumber,Ssn,Fname,Lname ((project ⨝ (Pnumber=Pno) works_on) ⨝(Essn=Ssn) (π Ssn,Fname,Lname employee))

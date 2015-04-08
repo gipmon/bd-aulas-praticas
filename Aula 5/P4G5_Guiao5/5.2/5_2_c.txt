@@ -1,0 +1,2 @@
+-- (γ numEnc; count(numEnc)->num_prod item)
+γ avg(num_prod)->avg_prod (γ numEnc; count(numEnc)->num_prod item)

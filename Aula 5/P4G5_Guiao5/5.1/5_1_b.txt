@@ -1,0 +1,1 @@
+π Fname,Minit,Lname (employee ⨝ (Super_ssn=c_Ssn) ρ  c_Ssn←Ssn (π Ssn (σ (Fname='Carlos' and Minit='D' and Lname='Gomes') (π Fname,Minit,Lname,Ssn employee))))

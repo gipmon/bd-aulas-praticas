@@ -1,0 +1,5 @@
+-- π numPresc, farmacia prescricao
+-- σ farmacia!=null (π numPresc, farmacia prescricao)
+-- σ farmacia!=null (π numPresc, farmacia prescricao) ⨝ presc_farmaco
+
+γ farmacia, numRegFarm; count(numRegFarm) -> farmacosVendidos (σ farmacia!=null (π numPresc, farmacia prescricao) ⨝ presc_farmaco)

@@ -1,0 +1,4 @@
+-- γ farmacia; count(numPresc) -> totalPresc  prescricao
+-- σ farmacia!=Null (γ farmacia; count(numPresc) -> totalPresc  prescricao)
+
+σ farmacia!=Null (γ farmacia; count(numPresc) -> totalPresc  prescricao)

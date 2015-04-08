@@ -1,0 +1,6 @@
+-- (fornecedor ⟕(nif=fornecedor) encomenda)
+-- γ nif; count(numero)->eTotal (fornecedor ⟕(nif=fornecedor) encomenda)
+-- (σ eTotal = 0 γ nif; count(numero)->eTotal (fornecedor ⟕(nif=fornecedor) encomenda))
+-- ρ fnif←nif fornecedor ⨝ (fnif=nif) (σ eTotal = 0 γ nif; count(numero)->eTotal (fornecedor ⟕(nif=fornecedor) encomenda))
+
+fornecedor ⨝ (π nif (σ encomenda.numero=null (fornecedor ⟕(nif=fornecedor) encomenda)))

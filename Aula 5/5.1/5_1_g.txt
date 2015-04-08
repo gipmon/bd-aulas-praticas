@@ -1,0 +1,4 @@
+ -- γ Essn; count(Essn)->Dependentes dependent
+ -- employee ⨝ Ssn=Essn (γ Essn; count(Essn)->Dependentes dependent)
+ 
+ σ Dependentes>2 (employee ⨝ Ssn=Essn (γ Essn; count(Essn)->Dependentes dependent))

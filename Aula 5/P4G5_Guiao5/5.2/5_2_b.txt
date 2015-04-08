@@ -1,0 +1,5 @@
+-- γ codProd; avg(unidades)->avg_unidades item
+-- produto ⨝ codigo=codProd γ codProd; avg(unidades)->avg_unidades item
+-- π codigo, nome, preco, iva, unidades, avg_unidades (produto ⨝ codigo=codProd γ codProd; avg(unidades)->avg_unidades item)
+
+produto ⨝ (ρ codigo←codProd (γ codProd; avg(unidades)->avg_unidades item))

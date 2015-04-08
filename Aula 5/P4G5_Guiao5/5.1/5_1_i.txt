@@ -1,0 +1,5 @@
+-- σ Dlocation != 'Aveiro' (dept_location)
+-- (σ Plocation = 'Aveiro' (project)) ⨝ (Dnum=Dnumber) (σ Dlocation != 'Aveiro' (dept_location))
+-- (works_on) ⨝ (Pno = Pnumber) (σ Plocation = 'Aveiro' (project)) ⨝ (Dnum=Dnumber) (σ Dlocation != 'Aveiro' (dept_location))
+-- (γ  Essn; count(Pno) -> Ptotal ((works_on) ⨝ (Pno = Pnumber) (σ Plocation = 'Aveiro' (project)) ⨝ (Dnum=Dnumber) (σ Dlocation != 'Aveiro' (dept_location)))
+π Fname, Minit, Lname, Address (employee ⨝ (Ssn = Essn) (γ  Essn; count(Pno) -> Ptotal ((works_on) ⨝ (Pno = Pnumber) (σ Plocation = 'Aveiro' (project)) ⨝ (Dnum=Dnumber) (σ Dlocation != 'Aveiro' (dept_location)))))

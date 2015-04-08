@@ -1,0 +1,8 @@
+-- ρ fnome←nome fornecedor
+-- (ρ fnome←nome (fornecedor) ⨝(nif=fornecedor) encomenda)
+-- (π nif, fnome, fax, numero (ρ fnome←nome (fornecedor) ⨝(nif=fornecedor) encomenda))
+-- (π nif, fnome, fax, numero (ρ fnome←nome (fornecedor) ⨝(nif=fornecedor) encomenda)) ⨝ (numero=numEnc) item 
+-- ρ punidades←unidades ((π nif, fnome, fax, numero (ρ fnome←nome (fornecedor) ⨝(nif=fornecedor) encomenda)) ⨝ (numero=numEnc) item)
+-- ρ punidades←unidades ((π nif, fnome, fax, numero (ρ fnome←nome (fornecedor) ⨝(nif=fornecedor) encomenda)) ⨝ (numero=numEnc) item) ⨝ (codProd=codigo) produto
+-- π nif, fnome, fax, numero, codProd, punidades, nome, preco, iva, unidades (ρ punidades←unidades ((π nif, fnome, fax, numero (ρ fnome←nome (fornecedor) ⨝(nif=fornecedor) encomenda)) ⨝ (numero=numEnc) item) ⨝ (codProd=codigo) produto)
+γ fnome, nif, nome; sum(punidades)->p_total π nif, fnome, fax, numero, codProd, punidades, nome, preco, iva, unidades (ρ punidades←unidades ((π nif, fnome, fax, numero (ρ fnome←nome (fornecedor) ⨝(nif=fornecedor) encomenda)) ⨝ (numero=numEnc) item) ⨝ (codProd=codigo) produto) 
