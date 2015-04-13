@@ -15,3 +15,12 @@ CREATE VIEW FUNC_EDITORS AS
 	FROM pubs.dbo.publishers JOIN pubs.dbo.employee ON publishers.pub_id=employee.pub_id
 
 SELECT * FROM FUNC_EDITORS
+
+-- ex1 a) iii)
+CREATE VIEW STORES_TITLES AS
+	SELECT stores.stor_name, titles.title FROM
+	(pubs.dbo.titles JOIN (pubs.dbo.sales JOIN pubs.dbo.stores ON sales.stor_id = stores.stor_id) 
+	ON titles.title_id = sales.title_id)
+
+SELECT * FROM STORES_TITLES;
+
