@@ -15,7 +15,7 @@ CREATE VIEW FUNC_EDITORS AS
 -- ex1 a) iii)
 CREATE VIEW STORES_TITLES AS
 	SELECT stores.stor_name, titles.title FROM
-	(pubs.dbo.titles JOIN (pubs.dbo.sales JOIN pubs.dbo.stores ON sales.stor_id = stores.stor_id) 
+	(pubs.dbo.titles JOIN (pubs.dbo.sales JOIN pubs.dbo.stores ON sales.stor_id = stores.stor_id)
 	ON titles.title_id = sales.title_id)
 
 -- ex1 a) iv)
@@ -33,8 +33,7 @@ SELECT * FROM BUSINESS_BOOKS;
 -- ex1 c)
 CREATE VIEW NAME_STORES_AUTHORS AS
 	(SELECT stor_name, name FROM
-		TITLE_AUTHOR, STORES_TITLES
-		WHERE TITLE_AUTHOR.title = STORES_TITLES.title
+		(TITLE_AUTHOR JOIN STORES_TITLES ON TITLE_AUTHOR.title = STORES_TITLES.title)
 	);
 
 SELECT * FROM NAME_STORES_AUTHORS ORDER BY stor_name, name ASC;
@@ -43,6 +42,6 @@ SELECT * FROM NAME_STORES_AUTHORS ORDER BY stor_name, name ASC;
 insert into BUSINESS_BOOKS (title_id, title, type, pub_id, price, notes) values('BDTst1', 'New BD Book','popular_comp', '1389', $30.00, 'A must-read for DB course.')
 
 ALTER VIEW BUSINESS_BOOKS AS
-	SELECT titles.title, titles.title_id, titles.type, titles.pub_id, titles.price, titles.notes 
+	SELECT titles.title, titles.title_id, titles.type, titles.pub_id, titles.price, titles.notes
 	FROM pubs.dbo.titles
 	WHERE titles.type = 'Business'
