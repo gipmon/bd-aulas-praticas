@@ -24,3 +24,10 @@ CREATE VIEW STORES_TITLES AS
 
 SELECT * FROM STORES_TITLES;
 
+-- ex1 a) iv)
+CREATE VIEW BUSINESS_BOOKS AS
+	SELECT titles.title
+	FROM pubs.dbo.titles
+	WHERE titles.type = 'Business'
+
+SELECT * FROM BUSINESS_BOOKS
