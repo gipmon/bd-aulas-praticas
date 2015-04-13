@@ -8,3 +8,10 @@ CREATE VIEW TITLE_AUTHOR AS
 	) ON titleauthor.title_id = titles.title_id);
 
 SELECT * FROM TITLE_AUTHOR;
+
+-- ex1 a) ii)
+CREATE VIEW FUNC_EDITORS AS
+	SELECT publishers.pub_name, employee.fname + ' ' + employee.minit + ' ' + employee.lname AS name
+	FROM pubs.dbo.publishers JOIN pubs.dbo.employee ON publishers.pub_id=employee.pub_id
+
+SELECT * FROM FUNC_EDITORS
