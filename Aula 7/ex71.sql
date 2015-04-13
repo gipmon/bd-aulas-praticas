@@ -39,3 +39,10 @@ CREATE VIEW NAME_STORES_AUTHORS AS
 
 SELECT * FROM NAME_STORES_AUTHORS ORDER BY stor_name, name ASC;
 
+--ex1 d)
+insert into BUSINESS_BOOKS (title_id, title, type, pub_id, price, notes) values('BDTst1', 'New BD Book','popular_comp', '1389', $30.00, 'A must-read for DB course.')
+
+ALTER VIEW BUSINESS_BOOKS AS
+	SELECT titles.title, titles.title_id, titles.type, titles.pub_id, titles.price, titles.notes 
+	FROM pubs.dbo.titles
+	WHERE titles.type = 'Business'
