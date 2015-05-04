@@ -65,3 +65,12 @@ WHERE ProductID = 945 AND StartDate = '2002-01-04'
 
 Rows    | Cost  | Pag. Reads | Time (ms) | Index Used                      | Index Op.
 1         0.005    16             12        IX_WorkOrder_ProductIDCovering   Index Seek (NonClustered)
+--------------------------------------------------------------------------------------------
+                                      7#
+--------------------------------------------------------------------------------------------
+Index: ProductID
+Query: SELECT WorkOrderID, StartDate FROM Production.WorkOrder WHERE ProductID = 945
+AND StartDate = '2002-01-04'
+
+Rows    | Cost | Pag. Reads | Time (ms) | Index Used                      | Index Op.
+1         0.003  12           11          IX_WorkOrder_ProductIDStartDate   Index Seek (NonClustered)
