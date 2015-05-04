@@ -41,5 +41,27 @@ Rows    | Cost | Pag. Reads | Time (ms) | Index Used               | Index Op.
 Index: ProductID
 Query: SELECT * FROM Production.WorkOrder WHERE ProductID = 757
 
-Rows    | Cost | Pag. Reads | Time (ms) | Index Used               | Index Op.
-72591     0.47    28           4        PK_WorkOrder_WorkOrderID     Clustered Index Scan
+Rows    | Cost | Pag. Reads | Time (ms) | Index Used                 | Index Op.
+12,4      0.37    28             4        IX_WorkOrder_ProductID       Index Seek (NonClustered)
+                                          PK_WorkOrder_WorkOrderID     Key Lookup (Clustered)
+--------------------------------------------------------------------------------------------
+                                      6#
+--------------------------------------------------------------------------------------------
+Index: ProductID Covered (StartDate)
+Query: SELECT WorkOrderID, StartDate FROM Production.WorkOrder WHERE ProductID = 757
+
+Rows    | Cost  | Pag. Reads | Time (ms) | Index Used                     | Index Op.
+11,25      0.003    40             15      IX_WorkOrder_ProductIDCovering   Index Seek (NonClustered)
+
+Index: ProductID Covered (StartDate)
+Query: SELECT WorkOrderID, StartDate FROM Production.WorkOrder WHERE ProductID = 945
+
+Rows    | Cost  | Pag. Reads | Time (ms) | Index Used                     | Index Op.
+1105     0.004    14             74        IX_WorkOrder_ProductIDCovering   Index Seek (NonClustered)
+
+Index: ProductID Covered (StartDate)
+Query: SELECT WorkOrderID FROM Production.WorkOrder
+WHERE ProductID = 945 AND StartDate = '2002-01-04'
+
+Rows    | Cost  | Pag. Reads | Time (ms) | Index Used                      | Index Op.
+1         0.005    16             12        IX_WorkOrder_ProductIDCovering   Index Seek (NonClustered)
