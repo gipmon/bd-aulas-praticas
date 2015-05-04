@@ -1,0 +1,22 @@
+--------------------------------------------------------------------------------------------
+                                      3
+--------------------------------------------------------------------------------------------
+a)
+
+# i)
+  CREATE INDEX PK_SSN on Employee(Sssn);
+
+# ii)
+  CREATE INDEX IX_NAME on Employee(Fname, Lname);
+
+# iii)
+  CREATE INDEX IX_EM_DNO on Emplyee(Dno);
+
+# iv)
+  CREATE INDEX IX_WO_PNO on Works_on(Pno);
+
+# v)
+  CREATE INDEX IX_DE_ESSN on Dependent(Essn);
+
+# vi)
+  CREATE INDEX IX_P_DNUM on Project(Dnum);
