@@ -1,0 +1,45 @@
+Results 10_1
+--------------------------------------------------------------------------------
+                                      1#
+--------------------------------------------------------------------------------
+Index: ProductID
+Query: select * from Production.WorkOrder
+
+Rows | Cost | Pag. Reads | Time (ms) | Index Used               | Index Op.
+72591  0.47    600           1031      PK_WorkOrder_WorkOrderID   Clustered Index Scan
+--------------------------------------------------------------------------------
+                                      2#
+--------------------------------------------------------------------------------
+Index: ProductID
+Query: select * from Production.WorkOrder where WorkOrderID=1234
+
+Rows | Cost | Pag. Reads | Time (ms) | Index Used               | Index Op.
+1     0.003    10           13        PK_WorkOrder_WorkOrderID   Clustered Index Seek
+--------------------------------------------------------------------------------
+                                      3#
+--------------------------------------------------------------------------------
+Index: ProductID
+Query: SELECT * FROM Production.WorkOrder WHERE WorkOrderID between 10000 and 10010
+Query: SELECT * FROM Production.WorkOrder WHERE WorkOrderID between 1 and 72591
+
+Rows    | Cost | Pag. Reads | Time (ms) | Index Used               | Index Op.
+11,9979  0.003    10           3          PK_WorkOrder_WorkOrderID   Clustered Index Seek
+
+Rows  | Cost | Pag. Reads | Time (ms) | Index Used               | Index Op.
+72591   0.47    538           1008        PK_WorkOrder_WorkOrderID   Clustered Index Seek
+--------------------------------------------------------------------------------
+                                      4#
+--------------------------------------------------------------------------------
+Index: ProductID
+Query: SELECT * FROM Production.WorkOrder WHERE StartDate = '2003-06-25'
+
+Rows    | Cost | Pag. Reads | Time (ms) | Index Used               | Index Op.
+72591     0.47    1126           88        PK_WorkOrder_WorkOrderID   Clustered Index Scan
+--------------------------------------------------------------------------------
+                                      5#
+--------------------------------------------------------------------------------
+Index: ProductID
+Query: SELECT * FROM Production.WorkOrder WHERE StartDate = '2003-06-25'
+
+Rows    | Cost | Pag. Reads | Time (ms) | Index Used               | Index Op.
+72591     0.47    1126           88        PK_WorkOrder_WorkOrderID   Clustered Index Scan
