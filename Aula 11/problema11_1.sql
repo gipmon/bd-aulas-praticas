@@ -69,3 +69,18 @@ UPDATE company.department SET Mgr_ssn = 41124234 WHERE Dnumber = 5;
 
 go
 UPDATE company.department SET Mgr_ssn = 183623612 WHERE Dnumber = 5;
+
+-- e)
+go
+-- DROP FUNCTION company.employee_projects
+CREATE FUNCTION company.employee_projects(@ssn int=null) 
+RETURNS TABLE
+WITH SCHEMABINDING, ENCRYPTION
+AS
+	RETURN (SELECT project.Pname, project.Plocation
+			FROM (company.works_on JOIN company.project 
+				  ON works_on.Pno = project.Pnumber)
+			WHERE works_on.Essn = @ssn);
+
+go
+SELECT * FROM company.employee_projects(183623612);
