@@ -51,7 +51,7 @@ PRINT @old_employee_years
 
 -- c)
 go
-CREATE TRIGGER trigger_employee ON company.department 
+CREATE TRIGGER trigger_employee ON company.department
 AFTER  INSERT, UPDATE
 AS
 	SET NOCOUNT ON;
@@ -70,15 +70,41 @@ UPDATE company.department SET Mgr_ssn = 41124234 WHERE Dnumber = 5;
 go
 UPDATE company.department SET Mgr_ssn = 183623612 WHERE Dnumber = 5;
 
+-- d)
+
+-- DROP TRIGGER trigger_salary ON company.employee
+CREATE TRIGGER trigger_salary ON company.employee
+AFTER INSERT, UPDATE
+AS
+	SET NOCOUNT ON;
+
+	DECLARE @salary money;
+
+	SELECT @salary = employee.Salary FROM company.employee JOIN (company.department JOIN inserted ON department.Dnumber = inserted.Dno) ON employee.Ssn = department.Mgr_ssn;
+
+	PRINT @salary
+	DECLARE @newSalary money;
+	DECLARE @ssn int;
+
+	SELECT @ssn = inserted.Ssn, @newSalary = inserted.Salary FROM inserted;
+
+	IF @newSalary >= @salary
+	BEGIN
+		 UPDATE company.employee SET Salary = @salary - 1 WHERE employee.Ssn = @ssn;
+	END;
+
+go
+UPDATE company.employee SET Salary = 1400 WHERE Ssn = 12652121;
+
 -- e)
 go
 -- DROP FUNCTION company.employee_projects
-CREATE FUNCTION company.employee_projects(@ssn int=null) 
+CREATE FUNCTION company.employee_projects(@ssn int=null)
 RETURNS TABLE
 WITH SCHEMABINDING, ENCRYPTION
 AS
 	RETURN (SELECT project.Pname, project.Plocation
-			FROM (company.works_on JOIN company.project 
+			FROM (company.works_on JOIN company.project
 				  ON works_on.Pno = project.Pnumber)
 			WHERE works_on.Essn = @ssn);
 
