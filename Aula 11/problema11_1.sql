@@ -49,3 +49,23 @@ EXEC company.sp_mgr_employee @old_employee_ssn OUTPUT, @old_employee_years OUTPU
 PRINT @old_employee_ssn
 PRINT @old_employee_years
 
+-- c)
+go
+CREATE TRIGGER trigger_employee ON company.department 
+AFTER  INSERT, UPDATE
+AS
+	SET NOCOUNT ON;
+	DECLARE @count AS INT;
+	SELECT @count=COUNT(department.Mgr_ssn) FROM company.department JOIN inserted ON department.Mgr_ssn = inserted.Mgr_ssn;
+
+	IF @count > 1
+		BEGIN
+			RAISERROR ('The employee can not be manager of more than one department', 16, 1);
+			ROLLBACK TRAN;
+		END;
+
+go
+UPDATE company.department SET Mgr_ssn = 41124234 WHERE Dnumber = 5;
+
+go
+UPDATE company.department SET Mgr_ssn = 183623612 WHERE Dnumber = 5;
