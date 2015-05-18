@@ -69,3 +69,29 @@ UPDATE company.department SET Mgr_ssn = 41124234 WHERE Dnumber = 5;
 
 go
 UPDATE company.department SET Mgr_ssn = 183623612 WHERE Dnumber = 5;
+
+-- d)
+
+-- DROP TRIGGER trigger_salary ON company.employee
+CREATE TRIGGER trigger_salary ON company.employee
+AFTER INSERT, UPDATE
+AS
+	SET NOCOUNT ON;
+	
+	DECLARE @salary money;
+
+	SELECT @salary = employee.Salary FROM company.employee JOIN (company.department JOIN inserted ON department.Dnumber = inserted.Dno) ON employee.Ssn = department.Mgr_ssn;
+
+	PRINT @salary
+	DECLARE @newSalary money;
+	DECLARE @ssn int;
+
+	SELECT @ssn = inserted.Ssn, @newSalary = inserted.Salary FROM inserted;
+
+	IF @newSalary >= @salary
+	BEGIN
+		 UPDATE company.employee SET Salary = @salary - 1 WHERE employee.Ssn = @ssn;
+	END;
+
+go
+UPDATE company.employee SET Salary = 1400 WHERE Ssn = 12652121;
