@@ -1,0 +1,15 @@
+Os store procedures são batchs armazenadas com um nome, são compiladas
+no momento de criação e não têm de ser recompiladas cada vez que o
+procedimento é invocado. Têm execução mais rápida pois são guardados em
+memória cache na primeira vez que são executados. Também são úteis para
+restringir as acções do utilizador da base de dados criando para isso
+store procedures para inserts, updates e deletes. Isto permite ter
+controlo sobre as operações que o utilizador realiza sobre a base de dados,
+garantindo a integridade dos dados.
+
+As UDFs têm os mesmos benefícios do que as stored procedures, são
+igualmente compiladas e optimizadas, são boas para ser utilizadas
+para incorporar lógica complexa dentro de uma consulta. Uma boa utilização
+para as UDFs é serem usadas para o mesmo efeito que uma vista com o
+benefício de que usando WITH SCHEMABINDING que previne a alteração
+ou eliminação de objetos utilizados pela função.

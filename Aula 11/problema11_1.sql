@@ -109,6 +109,7 @@ AS
 
 go
 SELECT * FROM company.employee_projects(183623612);
+<<<<<<< HEAD
 
 
 -- f)
@@ -163,3 +164,5 @@ AS
 go
 
 DELETE FROM company.department WHERE department.Dnumber = 3
+=======
+>>>>>>> origin/master
